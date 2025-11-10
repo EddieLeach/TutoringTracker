@@ -25,6 +25,14 @@ Students submit check-ins, while staff access a secure **Admin Dashboard** to vi
 
 ---
 
+🎥 **Demo Preview**
+
+![Tutoring Tracker Demo](demo.gif)
+
+*(Shows student check-in and admin dashboard live on Azure)*
+
+---
+
 ## ⚙️ Tech Stack
 
 **Frontend:** ASP.NET Core Razor Pages • Bootstrap UI  
