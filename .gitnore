@@ -1,0 +1,27 @@
+# Build + IDE
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Logs
+*.log
+
+# Local settings
+appsettings.Development.json
+secrets.json
+.env
+
+# SQLite database
+*.db
+*.db-shm
+*.db-wal
+
+# Publish artifacts
+/publish/
+*.zip
+
+# OS-specific
+.DS_Store
+Thumbs.db
