@@ -19,6 +19,7 @@ Students submit check-ins, while staff access a secure **Admin Dashboard** to vi
 
 **Admin Access Code:** `MathLab2025`  
 *(Demo credentials for interviewer access — cookie expires automatically after login.)*  
+**Student ID's:** `S1001` `S1002` `S1003`
 
 > Hosted on **Azure App Service (Free Tier)** – initial load may take a few seconds due to cold start.
 
