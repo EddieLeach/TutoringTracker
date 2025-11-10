@@ -1,0 +1,53 @@
+@page
+@model TutoringTracker.Pages.CheckInModel
+@{
+    ViewData["Title"] = "Math Lab Check-In";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Math Lab Check-In</h2>
+
+            @if (!string.IsNullOrEmpty(Model.Message))
+            {
+                <div class="alert @(Model.Message.Contains("successful") ? "alert-success" : "alert-warning")">
+                    @Model.Message
+                </div>
+            }
+
+            <form method="post" class="card p-4 shadow-sm">
+                <div class="mb-3">
+                    <label asp-for="StudentId" class="form-label">Student ID</label>
+                    <input asp-for="StudentId" class="form-control" placeholder="e.g. S1001" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Course</label>
+                    <select asp-for="SelectedCourseId" class="form-select">
+                        <option value="">Select a math course</option>
+                        @foreach (var course in Model.CourseOptions)
+                        {
+                            <option value="@course.Value">@course.Text</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Reason for Visit</label>
+                    <select asp-for="SelectedReason" class="form-select">
+                        <option value="">Select a reason</option>
+                        @foreach (var reason in Model.Reasons)
+                        {
+                            <option value="@reason">@reason</option>
+                        }
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    Check In
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

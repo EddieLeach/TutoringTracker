@@ -1,0 +1,105 @@
+@page
+@model TutoringTracker.Pages.AdminModel
+@{
+    ViewData["Title"] = "Math Lab Dashboard";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Math Lab Dashboard</h2>
+
+    <div class="d-flex justify-content-end gap-2 mb-3">
+        <a asp-page-handler="Export" class="btn btn-outline-secondary btn-sm">
+            Download CSV
+        </a>
+        <a asp-page-handler="Logout" class="btn btn-outline-danger btn-sm">
+            Logout
+        </a>
+    </div>
+
+
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Total Visits</h5>
+                    <p class="display-6">@Model.TotalVisits</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">Visits by Course</h6>
+                    @if (Model.VisitsByCourse.Any())
+                    {
+                        <ul class="mb-0">
+                            @foreach (var kvp in Model.VisitsByCourse)
+                            {
+                                <li><strong>@kvp.Key</strong>: @kvp.Value</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="mb-0 text-muted">No data yet.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Visits by Reason</h6>
+            @if (Model.VisitsByReason.Any())
+            {
+                <ul class="mb-0">
+                    @foreach (var kvp in Model.VisitsByReason)
+                    {
+                        <li><strong>@kvp.Key</strong>: @kvp.Value</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="mb-0 text-muted">No data yet.</p>
+            }
+        </div>
+    </div>
+
+    <h4 class="mt-4">Recent Visits</h4>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.Visits.Any())
+            {
+                @foreach (var v in Model.Visits)
+                {
+                    <tr>
+                        <td>@v.Time.ToLocalTime().ToString("g")</td>
+                        <td>@v.Student</td>
+                        <td>@v.Course</td>
+                        <td>@v.Reason</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-muted">No visits recorded yet.</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
